@@ -1,0 +1,459 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- 主横幅区域 -->
+<div class="relative overflow-hidden">
+    <!-- 背景装饰 -->
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-50 to-pink-50 opacity-50"></div>
+    <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+    <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+    
+    <!-- 主要内容 -->
+    <div class="container mx-auto px-4 relative">
+        <div class="min-h-[90vh] flex items-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- 左侧文字区域 -->
+                <div class="flex flex-col justify-center space-y-6">
+                    <div class="space-y-2">
+                        <span class="inline-block px-4 py-1 bg-purple-100 text-purple-600 rounded-full text-sm font-medium">
+                            AI智能写真生成
+                        </span>
+                        <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent leading-tight">
+                            让每张照片
+                            <br>都成为艺术品
+                        </h1>
+                    </div>
+                    <p class="text-gray-600 text-lg leading-relaxed max-w-xl">
+                        使用最先进的AI技术，让你的照片焕发新生。创建独特的写真风格，展现最美的自己。一键生成，即刻拥有专业级写真照片。
+                    </p>
+                    <div class="flex gap-4 pt-4">
+                        <a href="{{ url_for('studio') }}" 
+                           class="group relative inline-flex items-center justify-center px-8 py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white overflow-hidden transition-all duration-300 hover:scale-105">
+                            <span class="relative">立即体验</span>
+                        </a>
+                        <a href="#features" 
+                           class="group inline-flex items-center justify-center px-8 py-3 rounded-full border-2 border-purple-500 text-purple-500 hover:bg-purple-50 transition-all duration-300">
+                            了解更多
+                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 右侧图片展示区 -->
+                <div class="relative">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="transform hover:scale-105 transition duration-500">
+                            <div class="relative group">
+                                <img src="{{ url_for('static', filename='images/before1.jpg') }}" 
+                                     alt="原图" 
+                                     class="rounded-2xl shadow-lg w-full object-cover aspect-[3/4]">
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 rounded-2xl"></div>
+                                <p class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-700 bg-white px-4 py-1 rounded-full text-sm">
+                                    原图
+                                </p>
+                            </div>
+                        </div>
+                        <div class="transform hover:scale-105 transition duration-500 translate-y-8">
+                            <div class="relative group">
+                                <img src="{{ url_for('static', filename='images/after1.jpg') }}" 
+                                     alt="AI写真" 
+                                     class="rounded-2xl shadow-lg w-full object-cover aspect-[3/4]">
+                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 rounded-2xl"></div>
+                                <p class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-700 bg-white px-4 py-1 rounded-full text-sm">
+                                    AI写真
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 装饰元素 -->
+                    <div class="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-br from-purple-100 to-pink-100 rounded-full opacity-50 blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 数据统计区 -->
+<div class="border-y border-gray-100 bg-white">
+    <div class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="text-4xl font-bold text-purple-600">100万+</div>
+                <p class="text-gray-600 mt-2">用户选择</p>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-purple-600">50+</div>
+                <p class="text-gray-600 mt-2">AI风格</p>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-purple-600">30秒</div>
+                <p class="text-gray-600 mt-2">快速生成</p>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-bold text-purple-600">99%</div>
+                <p class="text-gray-600 mt-2">好评率</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 风格展示区 -->
+<div class="py-24 bg-gradient-to-br from-purple-50 to-pink-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">专业AI写真风格</h2>
+            <p class="text-gray-600">
+                多样化的写真风格，满足您在不同场景下的需求
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+            <!-- 证件照系列 -->
+            <div class="col-span-2 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition group">
+                <h3 class="text-xl font-semibold mb-4">证件照系列</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 rounded-xl bg-purple-50 hover:bg-purple-100 transition">
+                        <span class="text-2xl mb-2 block">👔</span>
+                        <p class="font-medium">证件照男</p>
+                        <p class="text-sm text-gray-600 mt-1">正装精英范</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-pink-50 hover:bg-pink-100 transition">
+                        <span class="text-2xl mb-2 block">👩‍💼</span>
+                        <p class="font-medium">证件照女</p>
+                        <p class="text-sm text-gray-600 mt-1">知性优雅范</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 商务写真系列 -->
+            <div class="col-span-2 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition group">
+                <h3 class="text-xl font-semibold mb-4">商务写真系列</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 rounded-xl bg-blue-50 hover:bg-blue-100 transition">
+                        <span class="text-2xl mb-2 block">🏢</span>
+                        <p class="font-medium">商务写真男</p>
+                        <p class="text-sm text-gray-600 mt-1">职场精英范</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-purple-50 hover:bg-purple-100 transition">
+                        <span class="text-2xl mb-2 block">💼</span>
+                        <p class="font-medium">商务写真女</p>
+                        <p class="text-sm text-gray-600 mt-1">职场女神范</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 四季主题系列 -->
+            <div class="col-span-2 md:col-span-1 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition">
+                <h3 class="text-lg font-semibold mb-4">四季主题</h3>
+                <div class="space-y-3">
+                    <div class="p-3 rounded-xl bg-green-50 hover:bg-green-100 transition">
+                        <span class="text-xl mb-1 block">🌸</span>
+                        <p class="font-medium">春日花园</p>
+                    </div>
+                    <div class="p-3 rounded-xl bg-yellow-50 hover:bg-yellow-100 transition">
+                        <span class="text-xl mb-1 block">🏃‍♀️</span>
+                        <p class="font-medium">夏日运动</p>
+                    </div>
+                    <div class="p-3 rounded-xl bg-orange-50 hover:bg-orange-100 transition">
+                        <span class="text-xl mb-1 block">🍁</span>
+                        <p class="font-medium">秋日印象</p>
+                    </div>
+                    <div class="p-3 rounded-xl bg-blue-50 hover:bg-blue-100 transition">
+                        <span class="text-xl mb-1 block">❄️</span>
+                        <p class="font-medium">冬日国风</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 特色风格系列 -->
+            <div class="col-span-2 md:col-span-2 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition">
+                <h3 class="text-xl font-semibold mb-4">特色风格</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition">
+                        <span class="text-2xl mb-2 block">🌆</span>
+                        <p class="font-medium">港风复古</p>
+                        <p class="text-sm text-gray-600 mt-1">复古怀旧风</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-pink-50 hover:bg-pink-100 transition">
+                        <span class="text-2xl mb-2 block">📸</span>
+                        <p class="font-medium">轻写真</p>
+                        <p class="text-sm text-gray-600 mt-1">清新自然风</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 风格选择提示 -->
+        <div class="mt-12 text-center">
+            <p class="text-gray-600 mb-6">每种风格都经过精心调教，确保最佳效果</p>
+            <a href="{{ url_for('studio') }}" 
+               class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white border-2 border-purple-500 text-purple-500 hover:bg-purple-50 transition group">
+                查看风格详情
+                <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- 特色功能区 -->
+<div id="features" class="py-24 bg-white relative overflow-hidden">
+    <div class="container mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">为什么选择魅影AI写真</h2>
+            <p class="text-gray-600">
+                我们提供业界领先的AI写真技术，让每个人都能轻松获得专业级写真照片
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- 第一个特色：多样风格 -->
+            <div class="group p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+                <div class="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">✨</div>
+                <h3 class="text-xl font-semibold mb-4">多样风格</h3>
+                <p class="text-gray-600 mb-6">提供多种精选写真风格，从清新自然到时尚潮流，总有一款适合你</p>
+                <ul class="space-y-3 text-gray-500">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        清新自然风
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        时尚潮流风
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        复古文艺风
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 第二个特色：快速生成 -->
+            <div class="group p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+                <div class="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">⚡</div>
+                <h3 class="text-xl font-semibold mb-4">快速生成</h3>
+                <p class="text-gray-600 mb-6">强大的AI引擎，几秒钟即可生成高质量写真照片，效率超乎想象</p>
+                <ul class="space-y-3 text-gray-500">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        30秒内完成处理
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        批量处理支持
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        高清晰度输出
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 第三个特色：隐私保护 -->
+            <div class="group p-8 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+                <div class="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">🔒</div>
+                <h3 class="text-xl font-semibold mb-4">隐私保护</h3>
+                <p class="text-gray-600 mb-6">所有上传的照片都经过加密处理，确保您的隐私安全不受侵犯</p>
+                <ul class="space-y-3 text-gray-500">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        端到端加密
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        24小时自动删除
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 text-purple-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        </svg>
+                        安全存储保障
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 使用步骤 -->
+<div class="py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">三步获得完美写真</h2>
+        <p class="text-gray-600 text-center mb-12">简单快捷的操作流程，人人都能轻松上手</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">1</div>
+                <h3 class="text-xl font-semibold mb-2">上传照片</h3>
+                <p class="text-gray-600">选择您喜欢的照片上传，支持多种格式</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">2</div>
+                <h3 class="text-xl font-semibold mb-2">选择风格</h3>
+                <p class="text-gray-600">挑选心仪的写真风格，预览效果</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-2xl mx-auto mb-4">3</div>
+                <h3 class="text-xl font-semibold mb-2">一键生成</h3>
+                <p class="text-gray-600">AI自动处理，快速获得专业写真</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 价格方案 -->
+<div class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">灵活的价格方案</h2>
+        <p class="text-gray-600 text-center mb-12">为不同需求提供最适合的选择</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition border">
+                <h3 class="text-xl font-semibold mb-2">体验版</h3>
+                <div class="text-3xl font-bold mb-4">免费</div>
+                <ul class="space-y-2 mb-6">
+                    <li class="flex items-center text-gray-600">
+                        <span class="mr-2 text-green-500">✓</span>
+                        3张免费体验
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                        <span class="mr-2 text-green-500">✓</span>
+                        基础风格选择
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                        <span class="mr-2 text-green-500">✓</span>
+                        标准处理速度
+                    </li>
+                </ul>
+                <a href="{{ url_for('studio') }}" 
+                   class="block text-center py-2 px-4 rounded-full border border-purple-500 text-purple-500 hover:bg-purple-50 transition">
+                    立即体验
+                </a>
+            </div>
+            <div class="p-6 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl shadow-md hover:shadow-lg transition text-white transform scale-105">
+                <h3 class="text-xl font-semibold mb-2">专业版</h3>
+                <div class="text-3xl font-bold mb-4">￥99/月</div>
+                <ul class="space-y-2 mb-6">
+                    <li class="flex items-center">
+                        <span class="mr-2">✓</span>
+                        无限次数使用
+                    </li>
+                    <li class="flex items-center">
+                        <span class="mr-2">✓</span>
+                        所有高级风格
+                    </li>
+                    <li class="flex items-center">
+                        <span class="mr-2">✓</span>
+                        优先处理队列
+                    </li>
+                    <li class="flex items-center">
+                        <span class="mr-2">✓</span>
+                        批量处理支持
+                    </li>
+                </ul>
+                <a href="#" 
+                   class="block text-center py-2 px-4 rounded-full bg-white text-purple-500 hover:bg-gray-100 transition">
+                    立即开通
+                </a>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition border">
+                <h3 class="text-xl font-semibold mb-2">企业版</h3>
+                <div class="text-3xl font-bold mb-4">定制</div>
+                <ul class="space-y-2 mb-6">
+                    <li class="flex items-center text-gray-600">
+                        <span class="mr-2 text-green-500">✓</span>
+                        专属服务支持
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                        <span class="mr-2 text-green-500">✓</span>
+                        自定义风格
+                    </li>
+                    <li class="flex items-center text-gray-600">
+                        <span class="mr-2 text-green-500">✓</span>
+                        API接口调用
+                    </li>
+                </ul>
+                <a href="#" 
+                   class="block text-center py-2 px-4 rounded-full border border-purple-500 text-purple-500 hover:bg-purple-50 transition">
+                    联系我们
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 用户评价 -->
+<div class="py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-4">用户评价</h2>
+        <p class="text-gray-600 text-center mb-12">来自真实用户的使用体验</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                        <span class="text-xl">👩</span>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">小美</h4>
+                        <div class="text-yellow-400">★★★★★</div>
+                    </div>
+                </div>
+                <p class="text-gray-600">"效果太惊艳了！一键就能生成专业级的写真照片，省去了去影楼的时间和费用。"</p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                        <span class="text-xl">👧</span>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">晴晴</h4>
+                        <div class="text-yellow-400">★★★★★</div>
+                    </div>
+                </div>
+                <p class="text-gray-600">"风格多样，操作简单，生成速度快，朋友们都问我是在哪里拍的，强烈推荐！"</p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                        <span class="text-xl">👱‍♀️</span>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">蓉蓉</h4>
+                        <div class="text-yellow-400">★★★★★</div>
+                    </div>
+                </div>
+                <p class="text-gray-600">"专业版的批量处理功能特别好用，一次性处理多张照片，效率很高。"</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 底部CTA -->
+<div class="py-16 bg-gradient-to-r from-purple-600 to-pink-500 text-white">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">开始你的AI写真之旅</h2>
+        <p class="mb-8 max-w-2xl mx-auto">立即体验AI魅影写真，创造属于你的完美写真照片</p>
+        <a href="{{ url_for('studio') }}" 
+           class="inline-block bg-white text-purple-500 px-8 py-3 rounded-full hover:bg-gray-100 transition">
+            免费体验
+        </a>
+    </div>
+</div>
+{% endblock %} 
